@@ -61,7 +61,7 @@
     <div class="admin-container" id="adminContent" style="display: none;">
         <div class="auto-save-badge" id="autoSaveBadge">✓ جميع التغييرات محفوظة</div>
         <a href="index.html" class="back-link">← العودة للموقع</a>
-        <h1>لوحة التحكم (Supabase) - محسّنة</h1>
+        <h1>لوحة التحكم (Supabase) - نسخة الإنتاج</h1>
 
         <div class="admin-grid">
             <!-- عداد الزوار -->
@@ -343,129 +343,43 @@
         const SUPABASE_ANON_KEY = "sb_publishable_nc3_YZT-EVwa-bPfqqnFpA_ko2q-z-L";
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // ================== البيانات الافتراضية ==================
-        const defaultData = {
-            header: {
-                title: "مجمع أسواق ريادة المستهلك",
-                subtitle: "أفضل المتاجر والمنتجات بأفضل الأسعار",
-                images: [
-                    "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1600&h=600&fit=crop",
-                    "https://images.unsplash.com/photo-1542838132-92c53300491e?w=1600&h=600&fit=crop",
-                    "https://images.unsplash.com/photo-1555529669-e69e7aa56ba9?w=1600&h=600&fit=crop",
-                    "https://images.unsplash.com/photo-1441984904996-4e9c9484f3b6?w=1600&h=600&fit=crop",
-                    "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&h=600&fit=crop"
-                ]
-            },
-            ticker: [
-                "🔥 عروض حصرية تصل إلى 50% خصم",
-                "💎 أشهر الماركات العالمية",
-                "🚚 توصيل مجاني للطلبات فوق 200 ريال",
-                "🎁 هدايا مجانية مع كل طلب",
-                "💰 خصم خاص للعملاء الجدد 20%",
-                "⭐ تقييمات عملاء ممتازة"
-            ],
-            carousel: [],
-            design: {
-                categoryBg: "linear-gradient(145deg, #f9eef7, #f3d9e8)",
-                categoryText: "#9b4d96",
-                categoryFontSize: "2rem",
-                storeBg: "#ffffff",
-                storeText: "#1e293b",
-                storeFontSize: "1.3rem",
-                productBg: "#ffffff",
-                productText: "#1e293b",
-                productFontSize: "0.85rem",
-                adBg: "linear-gradient(90deg, #fbbf24, #f59e0b)",
-                adText: "#0f172a",
-                adFontSize: "1.1rem",
-                generalFontSize: "1rem"
-            },
-            categories: [
-                { id: "cat1", name: "العطور والبخور", icon: "fas fa-spray-can-sparkles", slug: "perfumes", color: "#9b4d96", featuredImage: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=300&fit=crop", indexImage: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&h=400&fit=crop", showInIndex: true, indexOrder: 1, adText: "", adEnabled: false },
-                { id: "cat2", name: "الورد والهدايا", icon: "fas fa-gift", slug: "gifts", color: "#d97706", featuredImage: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400&h=300&fit=crop", indexImage: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=600&h=400&fit=crop", showInIndex: true, indexOrder: 2, adText: "", adEnabled: false },
-                { id: "cat3", name: "الإكسسوارات", icon: "fas fa-ring", slug: "accessories", color: "#4f6f8f", featuredImage: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=400&h=300&fit=crop", indexImage: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&h=400&fit=crop", showInIndex: true, indexOrder: 5, adText: "", adEnabled: false },
-                { id: "cat4", name: "الأزياء", icon: "fas fa-tshirt", slug: "fashion", color: "#2563eb", featuredImage: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=400&h=300&fit=crop", indexImage: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&h=400&fit=crop", showInIndex: true, indexOrder: 4, adText: "", adEnabled: false },
-                { id: "cat5", name: "الإلكترونيات", icon: "fas fa-laptop", slug: "electronics", color: "#0e7c7c", featuredImage: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=400&h=300&fit=crop", indexImage: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&h=400&fit=crop", showInIndex: true, indexOrder: 5, adText: "", adEnabled: false }
-            ],
-            stores: {
-                "العطور والبخور": [
-                    { id: "store-cat1-0", name: "ديوان العطور", category: "العطور والبخور", logo: "https://picsum.photos/seed/cat10/100/100", externalUrl: "#", hidden: false, description: "وصف المتجر", phone: "+966 123 456 789", address: "العنوان هنا", ownerCode: "", allowUpload: false, productDisplayMode: "grid", productDisplayCount: 10, numStrips: 10 }
-                ],
-                "الورد والهدايا": [
-                    { id: "store-cat2-0", name: "زهرة الحب", category: "الورد والهدايا", logo: "https://picsum.photos/seed/cat20/100/100", externalUrl: "#", hidden: false, description: "وصف المتجر", phone: "+966 123 456 789", address: "العنوان هنا", ownerCode: "", allowUpload: false, productDisplayMode: "grid", productDisplayCount: 10, numStrips: 10 }
-                ],
-                "الإكسسوارات": [
-                    { id: "store-cat3-0", name: "إكسسوارات أنيقة", category: "الإكسسوارات", logo: "https://picsum.photos/seed/cat30/100/100", externalUrl: "#", hidden: false, description: "وصف المتجر", phone: "+966 123 456 789", address: "العنوان هنا", ownerCode: "", allowUpload: false, productDisplayMode: "grid", productDisplayCount: 10, numStrips: 10 }
-                ],
-                "الأزياء": [
-                    { id: "store-cat4-0", name: "موضة الشباب", category: "الأزياء", logo: "https://picsum.photos/seed/cat40/100/100", externalUrl: "#", hidden: false, description: "وصف المتجر", phone: "+966 123 456 789", address: "العنوان هنا", ownerCode: "", allowUpload: false, productDisplayMode: "grid", productDisplayCount: 10, numStrips: 10 }
-                ],
-                "الإلكترونيات": [
-                    { id: "store-cat5-0", name: "تك إلكترونيك", category: "الإلكترونيات", logo: "https://picsum.photos/seed/cat50/100/100", externalUrl: "#", hidden: false, description: "وصف المتجر", phone: "+966 123 456 789", address: "العنوان هنا", ownerCode: "", allowUpload: false, productDisplayMode: "grid", productDisplayCount: 10, numStrips: 10 }
-                ]
-            },
-            products: {
-                "store-cat1-0": [
-                    { id: 1, name: "عطر مسك أبيض", oldPrice: 322, newPrice: 156, image: "https://picsum.photos/seed/pcat101/300/300", link: "#" },
-                    { id: 2, name: "دهن عود كمبودي", oldPrice: 432, newPrice: 267, image: "https://picsum.photos/seed/pcat102/300/300", link: "#" }
-                ],
-                "store-cat2-0": [
-                    { id: 1, name: "باقة ورد أحمر", oldPrice: 341, newPrice: 107, image: "https://picsum.photos/seed/pcat201/300/300", link: "#" },
-                    { id: 2, name: "سلة هدايا فاخرة", oldPrice: 480, newPrice: 264, image: "https://picsum.photos/seed/pcat202/300/300", link: "#" }
-                ],
-                "store-cat3-0": [
-                    { id: 1, name: "ساعة رجالية فاخرة", oldPrice: 456, newPrice: 236, image: "https://picsum.photos/seed/pcat301/300/300", link: "#" },
-                    { id: 2, name: "نظارة شمسية", oldPrice: 220, newPrice: 131, image: "https://picsum.photos/seed/pcat302/300/300", link: "#" }
-                ],
-                "store-cat4-0": [
-                    { id: 1, name: "تيشيرت قطني", oldPrice: 550, newPrice: 306, image: "https://picsum.photos/seed/pcat401/300/300", link: "#" },
-                    { id: 2, name: "جينز أزرق", oldPrice: 341, newPrice: 200, image: "https://picsum.photos/seed/pcat402/300/300", link: "#" }
-                ],
-                "store-cat5-0": [
-                    { id: 1, name: "آيفون 15", oldPrice: 249, newPrice: 97, image: "https://picsum.photos/seed/pcat501/300/300", link: "#" },
-                    { id: 2, name: "سامسونج S24", oldPrice: 333, newPrice: 121, image: "https://picsum.photos/seed/pcat502/300/300", link: "#" }
-                ]
-            },
-            testimonials: [
-                { name: "مستخدم 1", image: "https://picsum.photos/seed/user0/100/100", rating: 5, review: "تجربة رائعة مع هذا الموقع." },
-                { name: "مستخدم 2", image: "https://picsum.photos/seed/user1/100/100", rating: 5, review: "تجربة رائعة مع هذا الموقع." },
-                { name: "مستخدم 3", image: "https://picsum.photos/seed/user2/100/100", rating: 4, review: "تجربة رائعة مع هذا الموقع." }
-            ],
-            footer: {
-                email: "ramzealsalhy@gmail.com",
-                phone: "778562099",
-                whatsapp: "https://wa.me/778562099",
-                social: [
-                    { icon: "fab fa-facebook-f", url: "https://facebook.com" },
-                    { icon: "fab fa-twitter", url: "https://twitter.com" },
-                    { icon: "fab fa-instagram", url: "https://instagram.com" },
-                    { icon: "fab fa-whatsapp", url: "https://whatsapp.com" }
-                ],
-                payments: [
-                    "fab fa-cc-visa",
-                    "fab fa-cc-mastercard",
-                    "fab fa-cc-paypal",
-                    "fab fa-cc-apple-pay",
-                    "fab fa-cc-stripe"
-                ]
-            },
-            settings: {
-                currency: "SAR",
-                language: "ar",
-                showSaudiFlag: false,
-                cartEnabled: false,
-                enableUserProfile: true,
-                orderMethods: { whatsapp: true, email: true, chat: true },
-                trustBadges: [],
-                contests: [],
-                contactEmail: "ramzealsalhy@gmail.com"
-            },
-            messages: []
-        };
-
-        function enhanceData(data) {
-            if (!data.settings) {
-                data.settings = {
+        // ================== هيكل البيانات الأساسي (بدون أي بيانات تجريبية) ==================
+        function getEmptyDataStructure() {
+            return {
+                header: {
+                    title: "مجمع أسواق ريادة المستهلك",
+                    subtitle: "أفضل المتاجر والمنتجات بأفضل الأسعار",
+                    images: []
+                },
+                ticker: ["مرحباً بكم في مجمع أسواق ريادة المستهلك"],
+                carousel: [],
+                design: {
+                    categoryBg: "linear-gradient(145deg, #f9eef7, #f3d9e8)",
+                    categoryText: "#9b4d96",
+                    categoryFontSize: "2rem",
+                    storeBg: "#ffffff",
+                    storeText: "#1e293b",
+                    storeFontSize: "1.3rem",
+                    productBg: "#ffffff",
+                    productText: "#1e293b",
+                    productFontSize: "0.85rem",
+                    adBg: "linear-gradient(90deg, #fbbf24, #f59e0b)",
+                    adText: "#0f172a",
+                    adFontSize: "1.1rem",
+                    generalFontSize: "1rem"
+                },
+                categories: [],
+                stores: {},
+                products: {},
+                testimonials: [],
+                footer: {
+                    email: "admin@example.com",
+                    phone: "",
+                    whatsapp: "",
+                    social: [],
+                    payments: []
+                },
+                settings: {
                     currency: "SAR",
                     language: "ar",
                     showSaudiFlag: false,
@@ -474,21 +388,10 @@
                     orderMethods: { whatsapp: true, email: true, chat: true },
                     trustBadges: [],
                     contests: [],
-                    contactEmail: data.footer?.email || "admin@example.com"
-                };
-            }
-            for (let cat in data.stores) {
-                data.stores[cat].forEach(store => {
-                    if (!store.ownerCode) store.ownerCode = "";
-                    if (store.allowUpload === undefined) store.allowUpload = false;
-                    if (!store.productDisplayMode) store.productDisplayMode = "grid";
-                    if (!store.productDisplayCount) store.productDisplayCount = 10;
-                    if (!store.numStrips) store.numStrips = 10;
-                });
-            }
-            if (!data.carousel) data.carousel = [];
-            if (!data.messages) data.messages = [];
-            return data;
+                    contactEmail: "admin@example.com"
+                },
+                messages: []
+            };
         }
 
         let appData = null;
@@ -497,26 +400,69 @@
         let currentEditProductId = null;
         let currentEditCarouselId = null;
         let currentEditTestimonialIndex = null;
-
-        // متغير لتتبع الجداول المتغيرة
         let changedTables = new Set();
         let isSaving = false;
 
-        // ================== دوال Supabase المحسّنة ==================
+        // ================== دوال مساعدة ==================
+        function showToast(msg, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = 'toast-message';
+            toast.textContent = msg;
+            if (isError) toast.style.background = '#ef4444';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function sanitizeText(str) { 
+            if (!str) return ''; 
+            const div = document.createElement('div'); 
+            div.textContent = str; 
+            return div.innerHTML; 
+        }
+
+        function showSpinner(show) {
+            const badge = document.getElementById('autoSaveBadge');
+            if (show) {
+                badge.innerHTML = '<span class="spinner"></span> جاري الحفظ...';
+                badge.style.background = '#f59e0b';
+            } else {
+                badge.innerHTML = '✓ جميع التغييرات محفوظة';
+                badge.style.background = '#fbbf24';
+            }
+        }
+
+        function updateAutoSaveBadge() {
+            const badge = document.getElementById('autoSaveBadge');
+            if (badge) {
+                badge.innerHTML = '✓ جميع التغييرات محفوظة';
+                badge.style.background = '#fbbf24';
+            }
+        }
+
+        // حفظ نسخة احتياطية في localStorage
+        function updateLocalBackup() {
+            if (appData) {
+                localStorage.setItem('marketsDB_lastBackup', JSON.stringify(appData));
+            }
+        }
+
+        // ================== دوال Supabase الأساسية ==================
         async function loadFromSupabase() {
             try {
-                // تحميل الإعدادات فقط (مع تحديد الأعمدة)
                 const { data: settings, error: settingsErr } = await supabaseClient
                     .from('settings')
                     .select('data')
                     .eq('id', 'main')
                     .single();
-                if (settingsErr && settingsErr.code !== 'PGRST116') throw settingsErr;
-                if (!settings) {
+                
+                if (settingsErr && settingsErr.code === 'PGRST116') {
+                    // أول مرة: تهيئة قاعدة البيانات بهيكل فارغ
                     await seedSupabase();
                     return await loadFromSupabase();
+                } else if (settingsErr) {
+                    throw settingsErr;
                 }
-                // تحميل باقي الجداول مع تحديد الأعمدة الضرورية
+                
                 const [categoriesRes, storesRes, productsRes, testimonialsRes, carouselRes, messagesRes] = await Promise.all([
                     supabaseClient.from('categories').select('*'),
                     supabaseClient.from('stores').select('*'),
@@ -525,20 +471,24 @@
                     supabaseClient.from('carousel').select('*'),
                     supabaseClient.from('messages').select('*')
                 ]);
+                
                 if (categoriesRes.error) throw categoriesRes.error;
                 if (storesRes.error) throw storesRes.error;
                 if (productsRes.error) throw productsRes.error;
+                
                 const storesMap = {};
                 storesRes.data.forEach(store => {
                     if (!storesMap[store.category]) storesMap[store.category] = [];
                     storesMap[store.category].push(store);
                 });
+                
                 const productsMap = {};
                 productsRes.data.forEach(prod => {
                     if (!productsMap[prod.storeId]) productsMap[prod.storeId] = [];
                     productsMap[prod.storeId].push(prod);
                 });
-                appData = {
+                
+                const freshData = {
                     header: settings.data.header,
                     ticker: settings.data.ticker,
                     design: settings.data.design,
@@ -551,16 +501,68 @@
                     carousel: carouselRes.data,
                     messages: messagesRes.data
                 };
+                
+                // حفظ النسخة الاحتياطية
+                localStorage.setItem('marketsDB_lastBackup', JSON.stringify(freshData));
+                appData = freshData;
                 await syncLocalUsers();
                 return true;
+                
             } catch (err) {
-                console.error(err);
-                showToast("خطأ في تحميل البيانات من Supabase، سيتم استخدام النسخة المحلية");
-                const stored = localStorage.getItem('marketsDB');
-                if (stored) appData = JSON.parse(stored);
-                else appData = enhanceData(JSON.parse(JSON.stringify(defaultData)));
+                console.error('خطأ في تحميل البيانات من Supabase:', err);
+                showToast('فشل الاتصال بقاعدة البيانات، جاري تحميل آخر نسخة محفوظة', true);
+                
+                const backup = localStorage.getItem('marketsDB_lastBackup');
+                if (backup) {
+                    try {
+                        appData = JSON.parse(backup);
+                        showToast('تم تحميل آخر نسخة حقيقية من البيانات (وضع غير متصل)');
+                        return true;
+                    } catch (e) {
+                        console.error('فشل قراءة النسخة الاحتياطية', e);
+                    }
+                }
+                
+                // إذا لم توجد نسخة احتياطية، نستخدم هيكلاً فارغاً
+                appData = getEmptyDataStructure();
+                showToast('لا توجد بيانات سابقة. يرجى إضافة المحتوى من لوحة التحكم.', true);
                 return false;
             }
+        }
+
+        async function seedSupabase() {
+            const emptyData = getEmptyDataStructure();
+            // إضافة فئات أساسية (بدون صور)
+            const basicCategories = [
+                { id: "cat1", name: "العطور والبخور", icon: "fas fa-spray-can-sparkles", slug: "perfumes", color: "#9b4d96", featuredImage: "", indexImage: "", showInIndex: true, indexOrder: 1, adText: "", adEnabled: false },
+                { id: "cat2", name: "الورد والهدايا", icon: "fas fa-gift", slug: "gifts", color: "#d97706", featuredImage: "", indexImage: "", showInIndex: true, indexOrder: 2, adText: "", adEnabled: false },
+                { id: "cat3", name: "الإكسسوارات", icon: "fas fa-ring", slug: "accessories", color: "#4f6f8f", featuredImage: "", indexImage: "", showInIndex: true, indexOrder: 3, adText: "", adEnabled: false },
+                { id: "cat4", name: "الأزياء", icon: "fas fa-tshirt", slug: "fashion", color: "#2563eb", featuredImage: "", indexImage: "", showInIndex: true, indexOrder: 4, adText: "", adEnabled: false },
+                { id: "cat5", name: "الإلكترونيات", icon: "fas fa-laptop", slug: "electronics", color: "#0e7c7c", featuredImage: "", indexImage: "", showInIndex: true, indexOrder: 5, adText: "", adEnabled: false }
+            ];
+            emptyData.categories = basicCategories;
+            
+            // تهيئة stores لكل فئة كمصفوفة فارغة
+            for (const cat of basicCategories) {
+                emptyData.stores[cat.name] = [];
+            }
+            
+            await supabaseClient.from('settings').insert({
+                id: 'main',
+                data: {
+                    header: emptyData.header,
+                    ticker: emptyData.ticker,
+                    design: emptyData.design,
+                    footer: emptyData.footer,
+                    settings: emptyData.settings
+                }
+            });
+            
+            for (const cat of emptyData.categories) {
+                await supabaseClient.from('categories').insert(cat);
+            }
+            
+            showToast("✅ تم تهيئة قاعدة البيانات بنجاح. يرجى إضافة المحتوى.");
         }
 
         async function saveToSupabase() {
@@ -619,39 +621,22 @@
                     }
                 }
                 await Promise.all(promises);
-                localStorage.setItem('marketsDB', JSON.stringify(appData));
+                localStorage.setItem('marketsDB_lastBackup', JSON.stringify(appData));
                 updateAutoSaveBadge();
                 if (window.broadcastChannel) window.broadcastChannel.postMessage({ type: 'DB_UPDATE', timestamp: Date.now() });
                 changedTables.clear();
+                showToast('تم حفظ جميع التغييرات بنجاح');
             } catch (err) {
                 console.error(err);
-                showToast("خطأ في حفظ البيانات");
+                showToast('خطأ في حفظ البيانات', true);
             } finally {
                 isSaving = false;
                 showSpinner(false);
             }
         }
 
-        function showSpinner(show) {
-            const badge = document.getElementById('autoSaveBadge');
-            if (show) {
-                badge.innerHTML = '<span class="spinner"></span> جاري الحفظ...';
-                badge.style.background = '#f59e0b';
-            } else {
-                badge.innerHTML = '✓ جميع التغييرات محفوظة';
-                badge.style.background = '#fbbf24';
-            }
-        }
-
-        function updateAutoSaveBadge() {
-            const badge = document.getElementById('autoSaveBadge');
-            if (badge) {
-                badge.innerHTML = '✓ جميع التغييرات محفوظة';
-                badge.style.background = '#fbbf24';
-            }
-        }
-
         async function syncLocalUsers() {
+            // مزامنة المستخدمين من localStorage إلى Supabase (بدون كلمات مرور)
             const localUsers = JSON.parse(localStorage.getItem('users')) || [];
             for (const user of localUsers) {
                 const { data: existing } = await supabaseClient.from('users').select('id').eq('username', user.username).single();
@@ -663,53 +648,11 @@
                         favorites: user.favorites || [],
                         purchases: user.purchases || []
                     });
-                } else {
-                    await supabaseClient.from('users').update({
-                        likes: user.likes || [],
-                        favorites: user.favorites || [],
-                        purchases: user.purchases || []
-                    }).eq('username', user.username);
                 }
             }
-            const { data: remoteUsers } = await supabaseClient.from('users').select('*');
-            if (remoteUsers) localStorage.setItem('users', JSON.stringify(remoteUsers));
         }
 
-        async function seedSupabase() {
-            const enhanced = enhanceData(JSON.parse(JSON.stringify(defaultData)));
-            await supabaseClient.from('settings').insert({
-                id: 'main',
-                data: {
-                    header: enhanced.header,
-                    ticker: enhanced.ticker,
-                    design: enhanced.design,
-                    footer: enhanced.footer,
-                    settings: enhanced.settings
-                }
-            });
-            for (const cat of enhanced.categories) await supabaseClient.from('categories').insert(cat);
-            for (const catName in enhanced.stores) {
-                for (const store of enhanced.stores[catName]) await supabaseClient.from('stores').insert(store);
-            }
-            for (const storeId in enhanced.products) {
-                for (const prod of enhanced.products[storeId]) await supabaseClient.from('products').insert({ ...prod, storeId });
-            }
-            for (const t of enhanced.testimonials) await supabaseClient.from('testimonials').insert(t);
-            for (const ad of enhanced.carousel) await supabaseClient.from('carousel').insert(ad);
-            showToast("✅ تم تهيئة قاعدة البيانات بنجاح");
-        }
-
-        function showToast(msg) {
-            const toast = document.createElement('div');
-            toast.className = 'toast-message';
-            toast.textContent = msg;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
-        }
-
-        function sanitizeText(str) { if (!str) return ''; const div = document.createElement('div'); div.textContent = str; return div.innerHTML; }
-
-        // ================== دوال عرض القوائم (بدون تغيير) ==================
+        // ================== دوال عرض القوائم ==================
         function refreshAllLists() {
             populateCategoriesList();
             if (document.getElementById('storeCategorySelect').value) populateStoresList(document.getElementById('storeCategorySelect').value);
@@ -902,7 +845,7 @@
             return null;
         }
 
-        // ================== دوال CRUD مع تتبع الجداول المتغيرة ==================
+        // ================== دوال CRUD ==================
         window.editCategory = function(id) {
             const cat = appData.categories.find(c => c.id === id);
             if (!cat) return;
@@ -923,13 +866,16 @@
 
         window.deleteCategory = async function(id) {
             if (confirm('هل أنت متأكد من حذف هذه الفئة؟')) {
-                appData.categories = appData.categories.filter(c => c.id !== id);
-                const catName = appData.categories.find(c => c.id === id)?.name;
-                if (catName && appData.stores[catName]) delete appData.stores[catName];
-                changedTables.add('categories');
-                await saveToSupabase();
-                refreshAllLists();
-                showToast('تم حذف الفئة بنجاح');
+                const catIndex = appData.categories.findIndex(c => c.id === id);
+                if (catIndex !== -1) {
+                    const catName = appData.categories[catIndex].name;
+                    appData.categories.splice(catIndex, 1);
+                    if (appData.stores[catName]) delete appData.stores[catName];
+                    changedTables.add('categories');
+                    await saveToSupabase();
+                    refreshAllLists();
+                    showToast('تم حذف الفئة بنجاح');
+                }
             }
         };
 
@@ -1093,7 +1039,7 @@
             }
         };
 
-        // ================== أزرار الإضافة والتحديث (مع إضافة changedTables) ==================
+        // ================== أزرار الإضافة والتحديث ==================
         document.getElementById('addCategoryBtn').addEventListener('click', async () => {
             const name = document.getElementById('categoryName').value;
             if (!name) return alert('اسم الفئة مطلوب');
@@ -1103,8 +1049,8 @@
                 icon: document.getElementById('categoryIcon').value || 'fas fa-tag',
                 slug: document.getElementById('categorySlug').value || name.replace(/\s/g, '-').toLowerCase(),
                 color: document.getElementById('categoryColor').value,
-                featuredImage: document.getElementById('categoryFeaturedImage').value || 'https://via.placeholder.com/400x300',
-                indexImage: document.getElementById('categoryIndexImage').value || 'https://via.placeholder.com/600x400',
+                featuredImage: document.getElementById('categoryFeaturedImage').value || '',
+                indexImage: document.getElementById('categoryIndexImage').value || '',
                 showInIndex: document.getElementById('categoryShowInIndex').checked,
                 indexOrder: parseInt(document.getElementById('categoryIndexOrder').value) || 0,
                 adText: document.getElementById('categoryAdText').value,
@@ -1143,6 +1089,10 @@
             if (oldName !== newName && appData.stores[oldName]) {
                 appData.stores[newName] = appData.stores[oldName];
                 delete appData.stores[oldName];
+                // تحديث حقل category في كل متجر
+                for (const store of appData.stores[newName]) {
+                    store.category = newName;
+                }
             }
             changedTables.add('categories');
             await saveToSupabase();
@@ -1163,7 +1113,7 @@
                 id: newId,
                 name: name,
                 category: category,
-                logo: document.getElementById('storeLogo').value || 'https://via.placeholder.com/100',
+                logo: document.getElementById('storeLogo').value || '',
                 externalUrl: document.getElementById('storeExternalUrl').value || '#',
                 hidden: document.getElementById('storeHidden').checked,
                 description: document.getElementById('storeDescription').value,
@@ -1223,7 +1173,7 @@
                 name: name,
                 oldPrice: parseFloat(document.getElementById('productOldPrice').value),
                 newPrice: parseFloat(document.getElementById('productNewPrice').value),
-                image: document.getElementById('productImage').value || 'https://via.placeholder.com/300',
+                image: document.getElementById('productImage').value || '',
                 link: document.getElementById('productLink').value || '#'
             };
             if (!appData.products[storeId]) appData.products[storeId] = [];
@@ -1306,7 +1256,7 @@
             if (!name) return alert('الاسم مطلوب');
             const newTestimonial = {
                 name: name,
-                image: document.getElementById('testimonialImage').value || 'https://via.placeholder.com/100',
+                image: document.getElementById('testimonialImage').value || '',
                 rating: parseInt(document.getElementById('testimonialRating').value) || 5,
                 review: document.getElementById('testimonialReview').value
             };
@@ -1487,7 +1437,7 @@
             showToast('✅ تم إعادة تعيين العداد');
         });
 
-        // استيراد وتصدير JSON
+        // استيراد وتصدير JSON مع التحقق من الصحة
         document.getElementById('exportJsonBtn').addEventListener('click', () => {
             const dataStr = JSON.stringify(appData, null, 2);
             const blob = new Blob([dataStr], {type: "application/json"});
@@ -1511,8 +1461,21 @@
             reader.onload = async (ev) => {
                 try {
                     const importedData = JSON.parse(ev.target.result);
-                    if (!importedData.categories || !importedData.stores || !importedData.products) throw new Error('ملف غير صالح');
-                    appData = enhanceData(importedData);
+                    // تحقق أساسي من البنية
+                    if (!importedData.categories || !importedData.stores) throw new Error('ملف غير صالح: البيانات ناقصة');
+                    // ندمج البيانات المستوردة مع الهيكل الحالي (لا نستبدل بالكامل)
+                    appData.categories = importedData.categories;
+                    appData.stores = importedData.stores;
+                    appData.products = importedData.products || {};
+                    appData.testimonials = importedData.testimonials || [];
+                    appData.carousel = importedData.carousel || [];
+                    appData.messages = importedData.messages || [];
+                    appData.header = importedData.header || appData.header;
+                    appData.ticker = importedData.ticker || appData.ticker;
+                    appData.design = importedData.design || appData.design;
+                    appData.footer = importedData.footer || appData.footer;
+                    appData.settings = importedData.settings || appData.settings;
+                    
                     changedTables.add('settings');
                     changedTables.add('categories');
                     changedTables.add('stores');
@@ -1531,7 +1494,7 @@
             reader.readAsText(file);
         });
 
-        // رفع الصور
+        // رفع الصور وتحويلها إلى base64 مؤقتاً (للتخزين لاحقاً في Storage)
         function handleImageUpload(fileInput, targetInputId) {
             if (fileInput.files && fileInput.files[0]) {
                 const reader = new FileReader();
@@ -1573,9 +1536,10 @@
         });
         document.getElementById('storePermissionSelect').addEventListener('change', () => populateStorePermissions());
 
-        // تسجيل الدخول
+        // ================== تسجيل الدخول ==================
         window.checkLogin = async function() {
             const code = document.getElementById('secretCodeInput').value;
+            // في الإنتاج يجب استخدام Supabase Auth، لكننا نترك الرقم الثابت مؤقتاً مع تحذير
             if (code === "202122") {
                 document.getElementById('loginOverlay').style.display = 'none';
                 document.getElementById('adminContent').style.display = 'block';
